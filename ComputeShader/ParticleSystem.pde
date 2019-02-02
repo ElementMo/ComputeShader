@@ -13,9 +13,9 @@ class ParticleSystem {
     numOfParticles = count;
     for (int i=0; i<count; i++) {
       Particle p = new Particle();
-      p.pos.x = random(2)-1.0f;
-      p.pos.y = random(2)-1.0f;
 
+      p.pos.x = random(-1, 1);
+      p.pos.y = random(-1, 1);
 
       v.append(p.pos.x);
       v.append(p.pos.y);

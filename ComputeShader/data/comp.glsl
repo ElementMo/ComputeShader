@@ -1,7 +1,6 @@
 #version 430
 uniform vec2 mouse;
-uniform float strength;
-uniform float drag;
+uniform int isPressed;
 
 struct Particle{
 	vec2 pos;
@@ -20,12 +19,25 @@ void main()
 {
 	uint i = gl_GlobalInvocationID.x;
 
-	vec2 force = mouse - particles[i].pos;
-	force = normalize(force);
-	force *= 0.001f;
-	particles[i].acc = force;
-	particles[i].pos += particles[i].vel;
-	particles[i].vel += particles[i].acc;
+	if(isPressed == 0)
+	{
+		vec2 force = mouse - particles[i].pos;
+		force = normalize(force);
+		force *= 0.001f;
+		particles[i].acc = force;
+		particles[i].pos += particles[i].vel;
+		particles[i].vel += particles[i].acc;
+	}
+	else if(isPressed == 1)
+	{
+		vec2 force = particles[i].pos - mouse;
+		force = normalize(force);
+		force *= 0.001f;
+		particles[i].acc = force;
+		particles[i].pos += particles[i].vel;
+		particles[i].vel += particles[i].acc;
+	}
+
 
 
 	// vec2 dir = attractor - particles[i].pos;
