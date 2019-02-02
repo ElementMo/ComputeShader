@@ -1,14 +1,14 @@
 import com.jogamp.opengl.GL4;
 
-public class ShaderProgram {
-  private GL4 gl;
+class ShaderProgram {
+  GL4 gl;
 
-  private int  shaderProgram;
-  private int  vertShader;
-  private int  fragShader;
+  int  shaderProgram;
+  int  vertShader;
+  int  fragShader;
 
 
-  public ShaderProgram(GL4 gl, String vertexFileName, String fragmentFileName) {
+  ShaderProgram(GL4 gl, String vertexFileName, String fragmentFileName) {
     this.gl = gl;
 
     String vertSrc = PApplet.join(loadStrings(vertexFileName), "\n");
@@ -25,15 +25,15 @@ public class ShaderProgram {
     gl.glLinkProgram(shaderProgram);
   }
 
-  public void begin() {
+  void begin() {
     gl.glUseProgram(shaderProgram);
   }
-  public void draw() {
-    gl.glDrawArrays(gl.GL_POINTS, 0, vertices.length);
+  void draw(int count) {
+    gl.glDrawArrays(gl.GL_POINTS, 0, count);
   }
 
 
-  private int createAndCompileShader(int type, String shaderString) {
+  int createAndCompileShader(int type, String shaderString) {
     int shader = gl.glCreateShader(type);
 
     String[] vlines = new String[]{shaderString};
@@ -56,5 +56,12 @@ public class ShaderProgram {
     }
 
     return shader;
+  }
+
+  void release() {
+    //gl.glDetachShader(program, vertShader);
+    gl.glDeleteShader(vertShader);
+    //gl.glDetachShader(program, fragShader);
+    gl.glDeleteShader(fragShader);
   }
 }
