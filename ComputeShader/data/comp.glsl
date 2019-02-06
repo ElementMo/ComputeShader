@@ -39,7 +39,6 @@ void main()
 	}
 
 
-
 	// vec2 dir = attractor - particles[i].pos;
 
 	// float d = dot(dir, dir);
