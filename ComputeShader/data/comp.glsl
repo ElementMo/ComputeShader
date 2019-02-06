@@ -37,14 +37,4 @@ void main()
 		particles[i].pos += particles[i].vel;
 		particles[i].vel += particles[i].acc;
 	}
-
-
-	// vec2 dir = attractor - particles[i].pos;
-
-	// float d = dot(dir, dir);
-    // particles[i].acc = strength*(d+0.001)*dir;
-	// particles[i].vel += particles[i].acc;
-	// particles[i].vel *= drag;
-
-	// particles[i].pos += particles[i].vel;
 }
