@@ -3,7 +3,7 @@ import com.jogamp.common.nio.Buffers;
 import java.nio.FloatBuffer;
 
 
-float[] vertices = new float[1000000];
+float[] vertices = new float[100000];
 FloatBuffer fbVertices;
 
 GL4 gl;
@@ -21,7 +21,7 @@ void setup() {
   shaderProgram = new ShaderProgram(gl, "vert.glsl", "frag.glsl");
   computeProgram = new ComputeProgram(gl, "comp.glsl");
 }
-void draw() {
+void draw() {  
   background(0);
   computeProgram.beginDispatch(1000, 1, 1);
   shaderProgram.begin();
