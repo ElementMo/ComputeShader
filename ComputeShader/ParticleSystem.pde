@@ -35,7 +35,6 @@ class ParticleSystem {
     computeProgram = new ComputeProgram(gl, "comp.glsl", fbVertices);
   }
 
-  //如果使用多个粒子系统，此处可以让每一个粒子系统载入不同的shader文件
   void loadShaer(String v, String f, String c) {
     shaderProgram = new ShaderProgram(gl, v, f);
     computeProgram = new ComputeProgram(gl, c, fbVertices);
