@@ -18,10 +18,8 @@ void setup() {
 
 void draw() {
   background(0);
-  if (toggle) {
-    ps.update();
-    ps.render();
-  }
+  ps.update();
+  ps.render();
 }
 
 void dispose() {
