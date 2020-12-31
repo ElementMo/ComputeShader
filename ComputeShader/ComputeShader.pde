@@ -4,7 +4,7 @@ import java.nio.FloatBuffer;
 
 ParticleSystem ps;
 GL4 gl;
-boolean toggle = false;
+
 void setup() {
   size(1000, 1000, P3D);
 
@@ -14,7 +14,6 @@ void setup() {
   ps = new ParticleSystem(500000);
 }
 
-
 void draw() {
   background(0);
   ps.update();
@@ -23,8 +22,4 @@ void draw() {
 
 void dispose() {
   ps.release();
-}
-void keyPressed() {
-  if (key == 's')
-    toggle = true;
 }
