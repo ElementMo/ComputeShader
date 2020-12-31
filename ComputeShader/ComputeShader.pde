@@ -11,7 +11,7 @@ void setup() {
   PGL pgl = ((PGraphicsOpenGL)g).pgl;
   gl = ((PJOGL)pgl).gl.getGL4();
 
-  ps = new ParticleSystem(1000000);
+  ps = new ParticleSystem(500000);
 }
 
 

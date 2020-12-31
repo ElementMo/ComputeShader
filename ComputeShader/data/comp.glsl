@@ -6,6 +6,7 @@ struct Particle{
 	vec2 pos;
 	vec2 vel;
 	vec2 acc;
+	// vec4 col;
 };
 
 layout(std430, binding = 0) buffer particlesBuffer
@@ -27,6 +28,14 @@ void main()
 		particles[i].acc = force;
 		particles[i].pos += particles[i].vel;
 		particles[i].vel += particles[i].acc;
+		float maxSpeed = 0.03;
+
+		if(length(particles[i].vel) > maxSpeed){
+			particles[i].vel = normalize(particles[i].vel) * maxSpeed;
+		}
+		else{
+			particles[i].vel;
+		}
 	}
 	else if(isPressed == 1)
 	{

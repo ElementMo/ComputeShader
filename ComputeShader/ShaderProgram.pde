@@ -29,6 +29,7 @@ class ShaderProgram {
     gl.glUseProgram(shaderProgram);
   }
   void draw(int count) {
+    updateUniform2f("hue_range", 0.34, -0.45);
     gl.glDrawArrays(GL4.GL_POINTS, 0, count);
   }
 
@@ -56,6 +57,35 @@ class ShaderProgram {
     }
 
     return shader;
+  }
+
+  void updateUniform1f(String uniformName, float uniformValue) {
+    Integer loc = gl.glGetUniformLocation(shaderProgram, uniformName);
+    if (loc != -1)
+    {
+      gl.glUniform1f(loc, uniformValue);
+    }
+  }
+
+
+  void updateUniform2f(String uniformName, float uniformValue1, float uniformValue2) {
+
+    int loc = gl.glGetUniformLocation(shaderProgram, uniformName);
+    gl.glUniform2f(loc, uniformValue1, uniformValue2);
+
+    if (loc != -1)
+    {
+      gl.glUniform2f(loc, uniformValue1, uniformValue2);
+    }
+  }
+
+  void updateUniform3f(String uniformName, float uniformValue1, float uniformValue2, float uniformValue3) {
+
+    int loc = gl.glGetUniformLocation(shaderProgram, uniformName);
+    if (loc != -1)
+    {
+      gl.glUniform3f(loc, uniformValue1, uniformValue2, uniformValue3);
+    }
   }
 
   void release() {

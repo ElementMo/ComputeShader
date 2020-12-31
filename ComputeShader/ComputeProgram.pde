@@ -25,8 +25,12 @@ class ComputeProgram
     gl.glBindBuffer(GL4.GL_ARRAY_BUFFER, vbo[0]);
     gl.glBufferData(GL4.GL_ARRAY_BUFFER, verticesFB.limit()*4, verticesFB, GL4.GL_DYNAMIC_DRAW);
     gl.glEnableVertexAttribArray(0);
+    gl.glEnableVertexAttribArray(1);
     // Since the Particle struct has 3 vec2 variables, then the stride is 24
+    // position attribute (no offset)
     gl.glVertexAttribPointer(0, 2, GL4.GL_FLOAT, false, 24, 0);
+    // velocity attribute (with (2*(1*4))=8 offset)
+    gl.glVertexAttribPointer(1, 2, GL4.GL_FLOAT, false, 24, 8);
 
     ssbo = vbo[0];
     gl.glBindBufferBase(GL4.GL_SHADER_STORAGE_BUFFER, 0, ssbo);
